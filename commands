@@ -1,0 +1,144 @@
+
+
+
+
+
+mmv 'gen*' '1#1'
+----
+
+python eval.py visualization -n celeba_cropped -m PGAN --save_dataset out_images_v4 --size_dataset 1000
+
+
+-----
+
+python datasets.py celebaHQ input_images -o cropped_images -f
+
+----------
+ python train.py PGAN -c config_celebaHQ.json --restart -n celebaHQ
+
+----
+python -m visdom.server
+
+---
+
+python train.py PGAN -c config_celeba_cropped.json --restart -n celeba_cropped
+
+----
+
+python datasets.py celeba_cropped ./celeba_4 -o output
+
+
+----
+
+
+python object_detection/export_inference_graph.py \--input_type=image_tensor \--pipeline_config_path=object_detection/pipeline.config \--trained_checkpoint_prefix=/tmp/tmpmmkGC/model.ckpt-13171 \--output_directory=object_detection/output
+
+-------
+
+
+python object_detection/legacy/train.py \--logtostderr \--pipeline_config_path=object_detection/pipeline.config \--train_dir=object_detection/train_2
+
+
+----------------
+
+python object_detection/legacy/eval.py --logtostderr --pipeline_config_path=object_detection/pipeline.config --checkpoint_dir=object_detection/output --eval_dir=object_detection/eval
+---------------
+
+
+
+python object_detection/eval.py --logtostderr --pipeline_config_path=/media/demolakstate/Backup/4_Object-Detection-Quidditch/pipeline.config --checkpoint_dir=/media/demolakstate/Backup/4_Object-Detection-Quidditch/output --eval_dir=/media/demolakstate/Backup/4_Object-Detection-Quidditch/eval
+
+
+---
+
+python object_detection/eval.py --logtostderr --pipeline_config_path=/media/demolakstate/Backup/5_Object-Detection-Quidditch/pipeline.config --checkpoint_dir=/media/demolakstate/Backup/5_Object-Detection-Quidditch/output --eval_dir=/media/demolakstate/Backup/5_Object-Detection-Quidditch/eval
+
+
+
+
+-----
+
+python object_detection/eval.py --logtostderr --pipeline_config_path=pipeline.config --checkpoint_dir=output --eval_dir=eval
+
+
+------
+
+
+
+
+python object_detection/train.py \--logtostderr \--pipeline_config_path=pipeline.config \--train_dir=train
+
+
+
+export PYTHONPATH=$PYTHONPATH:`pwd`:`pwd`/slim
+
+
+
+
+python create_tf_record.py \    --data_dir=`pwd` \    --output_dir=`pwd`
+
+
+tensorboard --logdir=/media/demolakstate/Backup/4_Object-Detection-Quidditch/eval
+
+
+-----
+
+ssh -l okerinde volare.kdd.cs.ksu.edu
+
+
+----
+
+
+scp okerinde@volare.kdd.cs.ksu.edu: .
+scp username@from_host:file.txt /local/directory/
+
+
+----
+
+scp -r okerinde@volare.kdd.cs.ksu.edu:/home/okerinde/test /media/demolakstate/Backup/6_Object-Detection-Quidditch
+
+
+
+
+---
+
+python object_detection/export_inference_graph.py \--input_type=image_tensor \--pipeline_config_path=pipeline.config \--trained_checkpoint_prefix=train/model.ckpt-2373 \--output_directory=output
+
+python object_detection/export_inference_graph.py \--input_type=image_tensor \--pipeline_config_path=pipeline.config \--trained_checkpoint_prefix=train/model.ckpt-xxxxx \--output_directory=output
+
+
+-----
+
+
+python object_detection/inference.py \--input_dir=test \--output_dir=out_test \--label_map=annotations/label_map.pbtxt \--frozen_graph=output/frozen_inference_graph.pb \--num_output_classes=2
+
+python object_detection/inference.py \--input_dir={PATH} \--output_dir={PATH} \--label_map={PATH} \--frozen_graph={PATH} \--num_output_classes={NUM}
+
+
+-----
+
+(yolo_1) demolakstate@demolakstate:/media/demolakstate/Backup/RPE/Object-Detection_v4/darkflow$ python flow --model cfg/yolo_2.cfg --load yolov2.weights --train --annotation ../train/annotations --dataset ../train/images --epoch 1 --gpu 0.9
+
+----
+
+
+python object_detection/inference.py \--input_dir=images_test \--output_dir=output_test \--label_map=annotations_test/label_map.pbtxt \--frozen_graph=output/frozen_inference_graph.pb \--num_output_classes=2
+
+---
+
+
+python object_detection/model_main.py \--logtostderr \--pipeline_config_path=object_detection/pipeline.config \--train_dir=train
+
+````
+
+
+
+
+python object_detection/export_inference_graph.py \--input_type=image_tensor \--pipeline_config_path=object_detection/pipeline.config \--trained_checkpoint_prefix=object_detection/train/model.ckpt-13171 \--output_directory=object_detection/output
+
+
+`````
+
+python object_detection/export_inference_graph.py \--input_type=image_tensor \--pipeline_config_path=object_detection/pipeline.config \--trained_checkpoint_prefix=/tmp/tmpmmkGC/model.ckpt-13171 \--output_directory=object_detection/output
+
+
