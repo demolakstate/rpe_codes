@@ -12,7 +12,7 @@ for img in img_list:
      fout.write(line.replace('BloodImage_', ''))
 
    f.close()
-   fout.close()
+   fout.close() 
 
 
 
