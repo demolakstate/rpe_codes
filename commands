@@ -1,7 +1,9 @@
 
 
 
-
+---
+conda create -n=AnoGAN python=2.7
+---
 
 mmv 'gen*' '1#1'
 ----
