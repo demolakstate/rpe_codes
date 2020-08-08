@@ -1,6 +1,6 @@
 
 
-
+fim test_01.png
 ---
 conda create -n=AnoGAN python=2.7
 ---
