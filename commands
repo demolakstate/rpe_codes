@@ -1,5 +1,9 @@
 
 
+from google.colab import drive
+drive.mount('/content/drive')
+
+---
 fim test_01.png
 ---
 conda create -n=AnoGAN python=2.7
