@@ -1,5 +1,10 @@
 
+-------------
+pip install --user ipykernel
 
+python -m ipykernel install --user --name=myenv
+
+---------------
 from google.colab import drive
 drive.mount('/content/drive')
 
